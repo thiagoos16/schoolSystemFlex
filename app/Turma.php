@@ -17,4 +17,12 @@ class Turma extends Model
     public function disciplina() {
         return $this->belongsTo('App\Disciplina');
     }
+
+    public function alunos() {
+        return $this->belongsToMany('App\Aluno')->withTimestamps();
+    }
+
+    public function cursos() {
+        return $this->belongsToMany('App\Curso')->withTimestamps();
+    }
 }

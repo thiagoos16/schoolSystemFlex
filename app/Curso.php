@@ -13,4 +13,8 @@ class Curso extends Model
     public function alunos() {
         return $this->hasMany('App\Aluno');
     }
+
+    public function turmas() {
+        return $this->belongsToMany('App\Turma')->withTimestamps();
+    }
 }

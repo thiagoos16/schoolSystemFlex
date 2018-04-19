@@ -14,4 +14,8 @@ class Aluno extends Model
     public function curso() {
         return $this->belongTo('App\Curso');
     }
+
+    public function turmas() {
+        return $this->belongsToMany('App\Turma')->withTimestamps();
+    }
 }
