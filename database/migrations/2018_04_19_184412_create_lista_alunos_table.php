@@ -33,11 +33,11 @@ class CreateListaAlunosTable extends Migration
      */
     public function down()
     {
-        $table::table('lista_alunos', function(Blueprint $table){
+        Schema::table('lista_alunos', function(Blueprint $table){
             $table->dropForeign('id_aluno');
         });
 
-        $table::table('lista_alunos', function(Blueprint $table){
+        Schema::table('lista_alunos', function(Blueprint $table){
             $table->dropForeign('id_turma');
         });
 
