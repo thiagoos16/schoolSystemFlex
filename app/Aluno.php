@@ -10,4 +10,8 @@ class Aluno extends Model
 
     protected $fillable = ['nome', 'data_nascimento', 'id_curso',
                            'logradouro', 'numero', 'bairro', 'cidade', 'estado', 'cep'];
+
+    public function curso() {
+        return $this->belongTo('App\Curso');
+    }
 }
