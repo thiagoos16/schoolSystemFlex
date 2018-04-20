@@ -11,6 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('curso/', 'CursoController@index');
+Route::post('curso/', 'CursoController@create');
+Route::put('curso/{id}', 'CursoController@update');
+Route::delete('curso/{id}', 'CursoController@delete');
