@@ -19,3 +19,8 @@ Route::get('curso/', 'CursoController@index');
 Route::post('curso/', 'CursoController@create');
 Route::put('curso/{id}', 'CursoController@update');
 Route::delete('curso/{id}', 'CursoController@delete');
+
+Route::get('professor/', 'ProfessorController@index');
+Route::post('professor/', 'ProfessorController@create');
+Route::put('professor/{id}', 'ProfessorController@update');
+Route::delete('professor/{id}', 'ProfessorController@delete');
