@@ -29,3 +29,8 @@ Route::get('disciplina/', 'DisciplinaController@index');
 Route::post('disciplina/', 'DisciplinaController@create');
 Route::put('disciplina/{id}', 'DisciplinaController@update');
 Route::delete('disciplina/{id}', 'DisciplinaController@delete');
+
+Route::get('aluno/', 'AlunoController@index');
+Route::post('aluno/', 'AlunoController@create');
+Route::put('aluno/{id}', 'AlunoController@update');
+Route::delete('aluno/{id}', 'AlunoController@delete');
