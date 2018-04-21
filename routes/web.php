@@ -11,9 +11,10 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', [
+    'as' => 'index',
+    'uses' => 'Controller@index'
+]);
 
 Route::get('curso/', 'CursoController@index');
 Route::post('curso/', 'CursoController@create');
