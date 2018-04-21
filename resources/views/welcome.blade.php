@@ -34,18 +34,18 @@
     </head>
     <body>
         <header>
-        <nav>
-            <div class="nav-wrapper">
-                <a href="{{ route('index') }}" class="brand-logo">Logo</a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="*">Curso</a></li>
-                    <li><a href="*">Professor</a></li>
-                    <li><a href="*">Disciplina</a></li>
-                    <li><a href="*">Alunos</a></li>
-                    <li><a href="*">Turma</a></li>
-                </ul>
-            </div>
-        </nav>
+            <nav>
+                <div class="nav-wrapper">
+                    <a href="{{ route('index') }}" class="brand-logo">Logo</a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="{{ route('curso.index') }}">Curso</a></li>
+                        <li><a href="*">Professor</a></li>
+                        <li><a href="*">Disciplina</a></li>
+                        <li><a href="*">Alunos</a></li>
+                        <li><a href="*">Turma</a></li>
+                    </ul>
+                </div>
+            </nav>
         </header>
         <script type="text/javascript" src="js/materialize.min.js"></script>
     </body>

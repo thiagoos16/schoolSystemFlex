@@ -16,10 +16,22 @@ Route::get('/', [
     'uses' => 'Controller@index'
 ]);
 
-Route::get('curso/', 'CursoController@index');
-Route::post('curso/', 'CursoController@create');
-Route::put('curso/{id}', 'CursoController@update');
-Route::delete('curso/{id}', 'CursoController@delete');
+Route::get('curso/', [
+    'as' => 'curso.index',
+    'uses' => 'CursoController@index'
+]);
+Route::post('curso/', [
+    'as' => 'curso.create',
+    'uses' => 'CursoController@create'
+]);
+Route::put('curso/{id}', [
+    'as' => 'curso.update',
+    'uses' => 'CursoController@update'
+]);
+Route::delete('curso/{id}', [
+    'as' => 'curso.delete',
+    'uses' => 'CursoController@delete'
+)];
 
 Route::get('professor/', 'ProfessorController@index');
 Route::post('professor/', 'ProfessorController@create');

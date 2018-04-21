@@ -8,7 +8,12 @@ use App\Curso;
 class CursoController extends Controller
 {
     public function index() {
-        return Curso::all();
+
+        $cursos = Curso::all();
+
+        return view('curso/index', [
+            'cursos' => $cursos
+        ]);
     }
 
     public function create(Request $request) {
