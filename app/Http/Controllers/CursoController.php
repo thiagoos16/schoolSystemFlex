@@ -22,6 +22,14 @@ class CursoController extends Controller
         return $request->all();
     }
 
+    public function findById($id) {
+        $curso = Curso::find($id);
+
+        return view('curso/form', [
+            'curso' => $curso
+        ]);
+    }
+
     public function update(Request $request, $id) {
         Curso::find($id)->update($request->all());
 
