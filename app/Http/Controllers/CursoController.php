@@ -18,8 +18,13 @@ class CursoController extends Controller
 
     public function create(Request $request) {
         Curso::create($request->all());
-        
-        return $request->all();
+
+        $cursos = Curso::all();
+
+        return view('curso/index', [
+            'successMessage' => 'Curso Cadastrado com Sucesso!!',
+            'cursos' => $cursos
+        ]);
     }
 
     public function form() {

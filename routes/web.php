@@ -32,11 +32,11 @@ Route::post('curso/', [
     'as' => 'curso.create',
     'uses' => 'CursoController@create'
 ]);
-Route::put('curso/{id}', [
+Route::put('/{id}', [
     'as' => 'curso.update',
     'uses' => 'CursoController@update'
 ]);
-Route::delete('curso/{id}', [
+Route::delete('/{id}', [
     'as' => 'curso.delete',
     'uses' => 'CursoController@delete'
 ]);

@@ -29,6 +29,11 @@
         </header>
 
         <div class="container">
+
+            @if(isset($successMessage))
+                <h3> {{ $successMessage }} </h3>
+            @endif
+
             <div class="row">
                 <div class="col s12 offset-s12">
                     <a href="{{ route('curso.form') }}" class="waves-effect waves-light btn"><i class="material-icons">add_box</i>Adicionar</a>
