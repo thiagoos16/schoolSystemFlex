@@ -20,7 +20,11 @@ Route::get('curso/', [
     'as' => 'curso.index',
     'uses' => 'CursoController@index'
 ]);
-Route::get('curso/{id}', [
+Route::get('/form', [
+    'as' => 'curso.form',
+    'uses' => 'CursoController@form'
+]);
+Route::get('/{id}', [
     'as' => 'curso.findById',
     'uses' => 'CursoController@findById'
 ]);

@@ -29,6 +29,12 @@
         </header>
 
         <div class="container">
+            <div class="row">
+                <div class="col s12 offset-s12">
+                    <a href="{{ route('curso.form') }}" class="waves-effect waves-light btn"><i class="material-icons">add_box</i>Adicionar</a>
+                </div>
+            </div>
+
             <table> 
                 <thead>
                     <tr>
@@ -47,7 +53,7 @@
                                 <td> {{ $curso->nome }} </td>
                                 <td> {{ $curso->created_at }} </td>
                                 <td> {{ $curso->update_at }} </td>
-                                <td> <a href="{{ route('curso.findById', $curso->id) }}" title="Deletar"><i class="material-icons">delete</i></a> <a href="{{ route('curso.delete', $curso->id) }}" title="Editar"><i class="material-icons">edit</i></a> </td>
+                                <td> <a href="{{ route('curso.findById', $curso->id) }}" title="Editar"><i class="material-icons">edit</i></a> <a href="{{ route('curso.delete', $curso->id) }}" title="Deletar"><i class="material-icons">delete</i></a> </td>
                             </tr>
                         @endforeach
                     @endif

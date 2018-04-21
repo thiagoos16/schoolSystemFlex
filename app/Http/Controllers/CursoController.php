@@ -22,12 +22,14 @@ class CursoController extends Controller
         return $request->all();
     }
 
+    public function form() {
+        return view('curso/form');
+    }
+
     public function findById($id) {
         $curso = Curso::find($id);
 
-        return view('curso/form', [
-            'curso' => $curso
-        ]);
+        return \View::make('curso.form')->with('curso', $curso);
     }
 
     public function update(Request $request, $id) {
