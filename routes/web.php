@@ -20,6 +20,10 @@ Route::get('curso/', [
     'as' => 'curso.index',
     'uses' => 'CursoController@index'
 ]);
+Route::get('curso/{id}', [
+    'as' => 'curso.findById',
+    'uses' => 'CursoController@findById'
+]);
 Route::post('curso/', [
     'as' => 'curso.create',
     'uses' => 'CursoController@create'
@@ -31,7 +35,7 @@ Route::put('curso/{id}', [
 Route::delete('curso/{id}', [
     'as' => 'curso.delete',
     'uses' => 'CursoController@delete'
-)];
+]);
 
 Route::get('professor/', 'ProfessorController@index');
 Route::post('professor/', 'ProfessorController@create');
