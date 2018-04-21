@@ -47,7 +47,7 @@
                                 <td> {{ $curso->nome }} </td>
                                 <td> {{ $curso->created_at }} </td>
                                 <td> {{ $curso->update_at }} </td>
-                                <td> <a href="" title="Deletar"><i class="material-icons">delete</i></a> <a href="" title="Editar"><i class="material-icons">edit</i></a> </td>
+                                <td> <a href="{{ route('curso.findById', $curso->id) }}" title="Deletar"><i class="material-icons">delete</i></a> <a href="{{ route('curso.delete', $curso->id) }}" title="Editar"><i class="material-icons">edit</i></a> </td>
                             </tr>
                         @endforeach
                     @endif
