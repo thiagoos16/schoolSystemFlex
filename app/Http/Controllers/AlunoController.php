@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Aluno;
 use App\Curso;
+use View;
 
 class AlunoController extends Controller
 {
@@ -40,10 +41,27 @@ class AlunoController extends Controller
         return redirect('aluno/')->with("successMessage", "Aluno Cadastrado Com Sucesso");
     }
 
-    public function update(Request $request, $id) {
-        Aluno::find($id)->update($request->all());
+    public function viewEdit($id) {
+        $aluno_aux = Aluno::find($id);
+        $aluno = [];
 
-        return $request->all();
+        $curso = $aluno_aux->curso()->where('id', $aluno_aux->id_curso)->first();
+
+        $aluno = $aluno_aux;
+        $aluno['nome_curso'] = $curso->nome;
+
+        $cursos = Curso::all();
+
+        return View::make('aluno.edit')->with([
+            'aluno' => $aluno,
+            'cursos' => $cursos
+        ]);
+    }
+
+    public function edit(Request $request) {
+        Aluno::find($request->id)->update($request->all());
+
+        return redirect('/aluno')->with("successMessage", "Aluno Editado Com Sucesso");
     }
 
     public function delete($id) {
