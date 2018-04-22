@@ -8,7 +8,11 @@ use App\Aluno;
 class AlunoController extends Controller
 {
     public function index() {
-        return Aluno::all();
+        $alunos = Aluno::all();
+
+        return view('aluno/index', [
+            'alunos' => $alunos
+        ]);
     }
 
     public function create(Request $request) {
