@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Disciplina;
+use View;
 
 class DisciplinaController extends Controller
 {
@@ -25,10 +26,16 @@ class DisciplinaController extends Controller
         return redirect('disciplina/')->with("successMessage", "Disciplina Cadastrada Com Sucesso");
     }
 
-    public function update(Request $request, $id) {
-        Disciplina::find($id)->update($request->all());
+    public function viewEdit($id) {
+        $disciplina = Disciplina::find($id);
 
-        return $request->all();
+        return View::make('disciplina.edit')->with('disciplina', $disciplina);
+    }
+
+    public function edit(Request $request) {
+        Disciplina::find($request->id)->update($request->all());
+
+        return redirect('/disciplina')->with("successMessage", "Curso Editado Com Sucesso");
     }
 
     public function delete($id) {
