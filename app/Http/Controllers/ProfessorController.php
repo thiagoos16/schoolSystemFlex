@@ -8,7 +8,12 @@ use App\Professor;
 class ProfessorController extends Controller
 {
     public function index() {
-        return Professor::all();
+
+        $professores = Professor::all();
+
+        return view('professor/index', [
+            'professores' => $professores
+        ]);
     }
 
     public function create(Request $request) {

@@ -22,7 +22,7 @@
                     <a href="{{ route('index') }}" class="brand-logo">Logo</a>
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li><a href="{{ url('curso/') }}">Curso</a></li>
-                        <li><a href="*">Professor</a></li>
+                        <li><a href="{{ url('professor/') }}">Professor</a></li>
                         <li><a href="*">Disciplina</a></li>
                         <li><a href="*">Alunos</a></li>
                         <li><a href="*">Turma</a></li>
