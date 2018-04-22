@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Curso;
 use View;
+use PDF;
 
 class CursoController extends Controller
 {
@@ -54,9 +55,9 @@ class CursoController extends Controller
     }
 
     public function generatePdf() {
-
         $cursos = Curso::all();
-
-        dd($cursos);
+       
+        $pdf = PDF::loadview('curso.pdf', ['cursos' => $cursos]);
+        return $pdf->download('cursos.pdf');
     }
 }

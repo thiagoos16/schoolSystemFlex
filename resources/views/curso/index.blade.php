@@ -70,7 +70,7 @@
                                 <td> {{ $curso->id }} </td>
                                 <td> {{ $curso->nome }} </td>
                                 <td> {{ $curso->created_at }} </td>
-                                <td> {{ $curso->update_at }} </td>
+                                <td> {{ $curso->updated_at }} </td>
                                 <td> 
                                     <a href="{{ url('curso/edit', $curso->id) }}" title="Editar">
                                         <i class="material-icons">edit</i>
