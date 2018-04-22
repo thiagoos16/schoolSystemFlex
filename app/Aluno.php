@@ -9,7 +9,7 @@ class Aluno extends Model
     protected $table = 'aluno';
 
     protected $fillable = ['nome', 'data_nascimento', 'id_curso',
-                           'logradouro', 'numero', 'bairro', 'cidade', 'estado', 'cep'];
+                           'logradouro', 'numero', 'rua', 'bairro', 'cidade', 'estado', 'cep'];
 
     public function curso() {
         return $this->belongsTo('App\Curso');

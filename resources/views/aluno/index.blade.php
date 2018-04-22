@@ -36,7 +36,7 @@
                     @foreach ($alunos as $aluno)
                         <tr>
                             <td> {{ $aluno->nome }} </td>
-                            <th> {{ $aluno->data_nascimento }} </td>
+                            <td> {{ $aluno->data_nascimento }} </td>
                             <td> {{ $aluno->curso }} </td>
                             <td> {{ $aluno->rua }} </td>
                             <td> {{ $aluno->numero }} </td>

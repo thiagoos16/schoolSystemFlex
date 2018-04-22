@@ -9,7 +9,17 @@ use App\Curso;
 class AlunoController extends Controller
 {
     public function index() {
-        $alunos = Aluno::all();
+        $alunos_aux = Aluno::all();
+        $alunos = [];
+        
+        foreach ($alunos_aux as $aluno) {
+            $curso = $aluno->curso()->where('id', $aluno->id_curso)->first();
+            
+            $tempAluno = $aluno;
+            $tempAluno['curso'] = $curso->nome;
+
+            $alunos[] = $tempAluno;
+        }
 
         return view('aluno/index', [
             'alunos' => $alunos
