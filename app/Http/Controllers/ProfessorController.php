@@ -35,12 +35,20 @@ class ProfessorController extends Controller
     public function edit(Request $request) {
         Professor::find($request->id)->update($request->all());
 
-        return redirect('/professor')->with("successMessage", "Professor Editado Com Sucesso");;
+        return redirect('/professor')->with("successMessage", "Professor Editado Com Sucesso");
+    }
+
+    public function viewDelete($id) {
+        $professor = Professor::find($id);
+
+        return View::make('professor.delete')->with('professor', $professor);
     }
 
     public function delete($id) {
         Professor::find($id)->delete();
 
-        return Professor::all();
+        $professor = Professor::all();
+
+        return redirect('/professor')->with("successMessage", "Professor Deletado Com Sucesso");
     }
 }

@@ -38,7 +38,7 @@ class CursoController extends Controller
     public function edit(Request $request) {
         Curso::find($request->id)->update($request->all());
 
-        return redirect('/curso')->with("successMessage", "Curso Editado Com Sucesso");;
+        return redirect('/curso')->with("successMessage", "Curso Editado Com Sucesso");
     }
 
     public function viewDelete($id) {
@@ -52,7 +52,7 @@ class CursoController extends Controller
 
         $cursos = Curso::all();
 
-        return redirect('/curso')->with("successMessage", "Curso Deletado Com Sucesso");;
+        return redirect('/curso')->with("successMessage", "Curso Deletado Com Sucesso");
     }
 
     public function generatePdf() {
