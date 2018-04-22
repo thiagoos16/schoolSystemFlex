@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Aluno;
+use App\Curso;
 
 class AlunoController extends Controller
 {
@@ -15,10 +16,18 @@ class AlunoController extends Controller
         ]);
     }
 
+    public function viewCreate() {
+        $cursos = Curso::all();
+
+        return view('aluno.create', [
+            'cursos' => $cursos
+        ]);
+    }
+
     public function create(Request $request) {
         Aluno::create($request->all());
-        
-        return $request->all();
+
+        return redirect('aluno/')->with("successMessage", "Aluno Cadastrado Com Sucesso");
     }
 
     public function update(Request $request, $id) {

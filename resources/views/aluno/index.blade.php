@@ -28,6 +28,7 @@
                     <th> Bairro </th>
                     <th> Cidade </th>
                     <th> Estado </th>
+                    <th> Ações </th>
                 </tr>
             </thead>
             <tbody>

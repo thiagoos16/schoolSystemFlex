@@ -12,7 +12,7 @@ class Aluno extends Model
                            'logradouro', 'numero', 'bairro', 'cidade', 'estado', 'cep'];
 
     public function curso() {
-        return $this->belongTo('App\Curso');
+        return $this->belongsTo('App\Curso');
     }
 
     public function turmas() {
