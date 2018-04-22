@@ -64,9 +64,17 @@ class AlunoController extends Controller
         return redirect('/aluno')->with("successMessage", "Aluno Editado Com Sucesso");
     }
 
+    public function viewDelete($id) {
+        $aluno = Aluno::find($id);
+
+        return View::make('aluno.delete')->with('aluno', $aluno);
+    }
+
     public function delete($id) {
         Aluno::find($id)->delete();
 
-        return Aluno::all();
+        $aluno = Aluno::all();
+
+        return redirect('/aluno')->with("successMessage", "Aluno Deletado Com Sucesso");
     }
 }
