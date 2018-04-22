@@ -8,7 +8,11 @@ use App\Disciplina;
 class DisciplinaController extends Controller
 {
     public function index() {
-        return Disciplina::all();
+        $disciplinas = Disciplina::all();
+
+        return view('disciplina/index', [
+            'disciplinas' => $disciplinas
+        ]);
     }
 
     public function create(Request $request) {

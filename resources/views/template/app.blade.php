@@ -23,7 +23,7 @@
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li><a href="{{ url('curso/') }}">Curso</a></li>
                         <li><a href="{{ url('professor/') }}">Professor</a></li>
-                        <li><a href="*">Disciplina</a></li>
+                        <li><a href="{{ url('disciplina/') }}">Disciplina</a></li>
                         <li><a href="*">Alunos</a></li>
                         <li><a href="*">Turma</a></li>
                     </ul>
