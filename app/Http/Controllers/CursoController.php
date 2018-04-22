@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Curso;
+use View;
 
 class CursoController extends Controller
 {
@@ -16,36 +17,46 @@ class CursoController extends Controller
         ]);
     }
 
+    public function viewCreate() {
+        return view('curso.create');
+    }
+
     public function create(Request $request) {
         Curso::create($request->all());
 
-        $cursos = Curso::all();
-
-        return view('curso/index', [
-            'successMessage' => 'Curso Cadastrado com Sucesso!!',
-            'cursos' => $cursos
-        ]);
+        return redirect('/curso');
     }
 
-    public function form() {
-        return view('curso/form');
-    }
-
-    public function findById($id) {
+    public function viewEdit($id) {
         $curso = Curso::find($id);
 
-        return \View::make('curso.form')->with('curso', $curso);
+        return View::make('curso.edit')->with('curso', $curso);
     }
 
-    public function update(Request $request, $id) {
-        Curso::find($id)->update($request->all());
+    public function edit(Request $request) {
+        Curso::find($request->id)->update($request->all());
 
-        return $request->all();
+        return redirect('/curso');
+    }
+
+    public function viewDelete($id) {
+        $curso = Curso::find($id);
+
+        return View::make('curso.delete')->with('curso', $curso);
     }
 
     public function delete($id) {
         Curso::find($id)->delete();
 
-        return Curso::all();
+        $cursos = Curso::all();
+
+        return redirect('/curso');
+    }
+
+    public function generatePdf() {
+
+        $cursos = Curso::all();
+
+        dd($cursos);
     }
 }

@@ -8,29 +8,9 @@
         <title>Sistema Escolar Flex</title>
 
         <!-- Fonts -->
-        <link href="css/materialize.min.css" rel="stylesheet" type="text/css">
+        <link href="/css/materialize.min.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-        </style>
     </head>
     <body>
         <header>
@@ -47,6 +27,21 @@
                 </div>
             </nav>
         </header>
-        <script type="text/javascript" src="js/materialize.min.js"></script>
+
+        <div class="container">
+            <h4> Deletar o Curso: <b>{{ $curso->nome }}</b>? </h4>
+            <div class="row">
+                <div class="col s12">
+                    <a href="{{ url('curso/') }}" class="waves-effect waves-light btn">
+                        <i class="material-icons left">chevron_left</i>Cancelar
+                    </a>
+                    <a href="{{ url('curso/destroy', $curso->id) }}" class="waves-effect waves-light btn">
+                        <i class="material-icons left">close</i>Excluir
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <script type="text/javascript" src="/js/materialize.min.js"></script>
     </body>
 </html>

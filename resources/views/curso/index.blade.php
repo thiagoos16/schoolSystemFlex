@@ -11,14 +11,20 @@
         <link href="css/materialize.min.css" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+        <style>
+            .container .row {
+                margin-top:5%
+            }
+        </style>
     </head>
+
     <body>
         <header>
             <nav>
                 <div class="nav-wrapper">
                     <a href="{{ route('index') }}" class="brand-logo">Logo</a>
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <li><a href="{{ route('curso.index') }}">Curso</a></li>
+                        <li><a href="{{ url('curso/') }}">Curso</a></li>
                         <li><a href="*">Professor</a></li>
                         <li><a href="*">Disciplina</a></li>
                         <li><a href="*">Alunos</a></li>
@@ -35,12 +41,19 @@
             @endif
 
             <div class="row">
-                <div class="col s12 offset-s12">
-                    <a href="{{ route('curso.form') }}" class="waves-effect waves-light btn"><i class="material-icons">add_box</i>Adicionar</a>
+                <div class="col s6">
+                    <a href="{{ url('curso/new') }}" class="waves-effect waves-light btn">
+                        <i class="material-icons left">add_box</i>Novo Curso
+                    </a>
                 </div>
-            </div>
+                <div class="col s6">
+                    <a href="{{ url('curso/pdf') }}" class="waves-effect waves-light btn">
+                        <i class="material-icons left">picture_as_pdf</i>Gerar PDF
+                    </a>
+                </div>
+            </div> 
 
-            <table> 
+            <table>
                 <thead>
                     <tr>
                         <th> Id </th>
@@ -58,7 +71,14 @@
                                 <td> {{ $curso->nome }} </td>
                                 <td> {{ $curso->created_at }} </td>
                                 <td> {{ $curso->update_at }} </td>
-                                <td> <a href="{{ route('curso.findById', $curso->id) }}" title="Editar"><i class="material-icons">edit</i></a> <a href="{{ route('curso.delete', $curso->id) }}" title="Deletar"><i class="material-icons">delete</i></a> </td>
+                                <td> 
+                                    <a href="{{ url('curso/edit', $curso->id) }}" title="Editar">
+                                        <i class="material-icons">edit</i>
+                                    </a> 
+                                    <a href="{{ url('curso/delete', $curso->id) }}" title="Deletar">
+                                        <i class="material-icons">delete</i>
+                                    </a> 
+                                </td>
                             </tr>
                         @endforeach
                     @endif
