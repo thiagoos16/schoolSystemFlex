@@ -6,9 +6,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Sistema Escolar Flex</title>
-
+        <style>
+            header {
+                margin-bottom:40px;
+            }
+        </style>    
         <!-- Fonts -->
         <link href="/css/materialize.min.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <body>
         <header>
@@ -26,6 +31,7 @@
             </nav>
         </header>
         @yield('content')
-        <script type="/text/javascript" src="js/materialize.min.js"></script>
+        <script type="/text/javascript" src="/js/materialize.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
     </body>
 </html>

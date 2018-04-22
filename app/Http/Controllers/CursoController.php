@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Curso;
 use View;
 use PDF;
+use Redirect;
 
 class CursoController extends Controller
 {
@@ -25,7 +26,7 @@ class CursoController extends Controller
     public function create(Request $request) {
         Curso::create($request->all());
 
-        return redirect('/curso');
+        return redirect('curso/')->with("successMessage", "Curso Cadastrado Com Sucesso");
     }
 
     public function viewEdit($id) {
@@ -37,7 +38,7 @@ class CursoController extends Controller
     public function edit(Request $request) {
         Curso::find($request->id)->update($request->all());
 
-        return redirect('/curso');
+        return redirect('/curso')->with("successMessage", "Curso Editado Com Sucesso");;
     }
 
     public function viewDelete($id) {
@@ -51,7 +52,7 @@ class CursoController extends Controller
 
         $cursos = Curso::all();
 
-        return redirect('/curso');
+        return redirect('/curso')->with("successMessage", "Curso Deletado Com Sucesso");;
     }
 
     public function generatePdf() {
