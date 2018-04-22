@@ -38,10 +38,16 @@ Route::group(['prefix' => 'professor'], function () {
     Route::get('/pdf', 'ProfessorController@generatePdf');   
 });
 
-// Route::get('professor/', 'ProfessorController@index');
-// Route::post('professor/', 'ProfessorController@create');
-// Route::put('professor/{id}', 'ProfessorController@update');
-// Route::delete('professor/{id}', 'ProfessorController@delete');
+Route::group(['prefix' => 'disciplina'], function () { 
+    Route::get('/', 'DisciplinaController@index');
+    Route::get('/new', 'DisciplinaController@viewCreate');
+    Route::post('/create', 'DisciplinaController@create');
+    Route::get('/edit/{id}', 'DisciplinaController@viewEdit');
+    Route::post('/edit', 'DisciplinaController@edit');
+    Route::get('/delete/{id}', 'DisciplinaController@viewDelete');
+    Route::get('/destroy/{id}', 'DisciplinaController@delete'); 
+    Route::get('/pdf', 'DisciplinaController@generatePdf');   
+});
 
 // Route::get('disciplina/', 'DisciplinaController@index');
 // Route::post('disciplina/', 'DisciplinaController@create');
