@@ -7,6 +7,7 @@ use App\Aluno;
 use App\Curso;
 use View;
 use PDF;
+use Exception;
 
 class AlunoController extends Controller
 {
@@ -37,9 +38,12 @@ class AlunoController extends Controller
     }
 
     public function create(Request $request) {
-        Aluno::create($request->all());
-
-        return redirect('aluno/')->with("successMessage", "Aluno Cadastrado Com Sucesso");
+        try {
+            Aluno::create($request->all());
+            return redirect('/aluno')->with("successMessage", "Aluno Cadastrado Com Sucesso");
+        } catch (Exception $e) {
+            return redirect('/aluno')->with("errorMessage", "Não foi possível Cadastrar o Aluno. Preencha todos os campos.");
+        }
     }
 
     public function viewEdit($id) {
@@ -60,9 +64,12 @@ class AlunoController extends Controller
     }
 
     public function edit(Request $request) {
-        Aluno::find($request->id)->update($request->all());
-
-        return redirect('/aluno')->with("successMessage", "Aluno Editado Com Sucesso");
+        try {
+            Aluno::find($request->id)->update($request->all());
+            return redirect('/aluno')->with("successMessage", "Aluno Editado Com Sucesso");
+        } catch (Exception $e) {
+            return redirect('/aluno')->with("errorMessage", "Não foi possível Editar o Aluno. Verifique todos os campos.");
+        }
     }
 
     public function viewDelete($id) {

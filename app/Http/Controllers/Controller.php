@@ -12,6 +12,6 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function index () {
-        return view('welcome');
+        return view('template.app');
     }
 }

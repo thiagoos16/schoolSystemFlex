@@ -3,6 +3,7 @@
 @section("content")
     <div class="container">
         <h3 style="margin-bottom:40px;"> {{ Session::get('successMessage') }} </h3>
+        <h5 style="margin-bottom:40px;"> {{ Session::get('errorMessage') }} </h5>
 
         <div class="row">
             <div class="col s6">

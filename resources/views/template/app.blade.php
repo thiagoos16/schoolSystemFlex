@@ -13,6 +13,9 @@
             input[type=number]::-webkit-inner-spin-button {
                -webkit-appearance: none;
             }
+            .nav-wrapper {
+                background-color: #668cff;
+            }
         </style>    
         <!-- Fonts -->
         <link href="/css/materialize.min.css" rel="stylesheet" type="text/css">
@@ -22,7 +25,7 @@
         <header>
             <nav>
                 <div class="nav-wrapper">
-                    <a href="{{ route('index') }}" class="brand-logo">Logo</a>
+                    <a href="{{ route('index') }}" class="brand-logo">Sistemas Escolar FLEX</a>
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li><a href="{{ url('curso/') }}">Curso</a></li>
                         <li><a href="{{ url('professor/') }}">Professor</a></li>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Disciplina;
 use View;
 use PDF;
+use Exception;
 
 class DisciplinaController extends Controller
 {
@@ -22,9 +23,12 @@ class DisciplinaController extends Controller
     }
 
     public function create(Request $request) {
-        Disciplina::create($request->all());
-
-        return redirect('disciplina/')->with("successMessage", "Disciplina Cadastrada Com Sucesso");
+        try {
+            Disciplina::create($request->all());
+            return redirect('disciplina/')->with("successMessage", "Disciplina Cadastrada Com Sucesso.");
+        } catch (Exception $e) {
+            return redirect('/disciplina')->with("errorMessage", "Não foi possível Cadastrar a Disciplina. Preencha todos os campos.");
+        }
     }
 
     public function viewEdit($id) {
@@ -34,9 +38,12 @@ class DisciplinaController extends Controller
     }
 
     public function edit(Request $request) {
-        Disciplina::find($request->id)->update($request->all());
-
-        return redirect('/disciplina')->with("successMessage", "Curso Editado Com Sucesso");
+        try {
+            Disciplina::find($request->id)->update($request->all());
+            return redirect('/disciplina')->with("successMessage", "Curso Editado Com Sucesso.");
+        } catch (Exception $e) {
+            return redirect('/disciplina')->with("errorMessage", "Não foi possível Editar a Disciplina. Verifique os campos.");
+        }
     }
 
     public function viewDelete($id) {
