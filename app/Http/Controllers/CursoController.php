@@ -27,7 +27,7 @@ class CursoController extends Controller
     public function create(Request $request) {
         try {
             Curso::create($request->all());
-            return redirect('curso/')->with("successMessage", "Curso Cadastrado Com Sucesso");
+            return redirect('/curso')->with("successMessage", "Curso Cadastrado Com Sucesso");
         } catch (Exception $e) {
             return redirect('/curso')->with("errorMessage", "Não foi possível Cadastrar o Curso. Preencha todos os campos.");
         }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Professor;
 use View;
 use PDF;
+use Exception;
 
 class ProfessorController extends Controller
 {
@@ -22,9 +23,13 @@ class ProfessorController extends Controller
     }
 
     public function create(Request $request) {
-        Professor::create($request->all());
-
-        return redirect('professor/')->with("successMessage", "Professor Cadastrado Com Sucesso");
+        try {
+            Professor::create($request->all());
+            return redirect('/professor')->with("successMessage", "Professor Cadastrado Com Sucesso");
+        } catch (Exception $e) {
+            return redirect('/professor')->with("errorMessage", "Não foi possível Cadastrar o Professor. Preencha todos os campos.");
+        }
+        
     }
 
     public function viewEdit($id) {
@@ -34,9 +39,12 @@ class ProfessorController extends Controller
     }
 
     public function edit(Request $request) {
-        Professor::find($request->id)->update($request->all());
-
-        return redirect('/professor')->with("successMessage", "Professor Editado Com Sucesso");
+        try {
+            Professor::find($request->id)->update($request->all());
+            return redirect('/professor')->with("successMessage", "Professor Editado Com Sucesso");
+        } catch (Exception $e) {
+            return redirect('/professor')->with("errorMessage", "Não foi possível Editar o Professor. Verifique os campos.");
+        }
     }
 
     public function viewDelete($id) {
