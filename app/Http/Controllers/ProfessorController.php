@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Professor;
+use View;
 
 class ProfessorController extends Controller
 {
@@ -25,10 +26,16 @@ class ProfessorController extends Controller
         return redirect('professor/')->with("successMessage", "Professor Cadastrado Com Sucesso");
     }
 
-    public function update(Request $request, $id) {
-        Professor::find($id)->update($request->all());
+    public function viewEdit($id) {
+        $professor = Professor::find($id);
 
-        return $request->all();
+        return View::make('professor.edit')->with('professor', $professor);
+    }
+
+    public function edit(Request $request) {
+        Professor::find($request->id)->update($request->all());
+
+        return redirect('/professor')->with("successMessage", "Professor Editado Com Sucesso");;
     }
 
     public function delete($id) {
