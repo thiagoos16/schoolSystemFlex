@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Aluno;
 use App\Curso;
 use View;
+use PDF;
 
 class AlunoController extends Controller
 {
@@ -76,5 +77,22 @@ class AlunoController extends Controller
         $aluno = Aluno::all();
 
         return redirect('/aluno')->with("successMessage", "Aluno Deletado Com Sucesso");
+    }
+
+    public function generatePdf() {
+        $alunos_aux = Aluno::all();
+        $alunos = [];
+        
+        foreach ($alunos_aux as $aluno) {
+            $curso = $aluno->curso()->where('id', $aluno->id_curso)->first();
+        
+            $tempAluno = $aluno;
+            $tempAluno['curso'] = $curso->nome;
+
+            $alunos[] = $tempAluno;
+        }
+       
+        $pdf = PDF::loadview('aluno.pdf', ['alunos' => $alunos]);
+        return $pdf->download('alunos.pdf');
     }
 }
