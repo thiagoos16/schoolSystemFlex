@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col s6">
                 <a href="{{ url('disciplina/new') }}" class="waves-effect waves-light btn">
-                    <i class="material-icons left">add_box</i>Novo Disciplina
+                    <i class="material-icons left">add_box</i>Nova Disciplina
                 </a>
             </div>
             <div class="col s6">

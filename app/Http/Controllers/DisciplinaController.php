@@ -15,10 +15,14 @@ class DisciplinaController extends Controller
         ]);
     }
 
+    public function viewCreate() {
+        return view('disciplina.create');
+    }
+
     public function create(Request $request) {
         Disciplina::create($request->all());
-        
-        return $request->all();
+
+        return redirect('disciplina/')->with("successMessage", "Disciplina Cadastrada Com Sucesso");
     }
 
     public function update(Request $request, $id) {
