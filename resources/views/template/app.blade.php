@@ -25,7 +25,7 @@
         <header>
             <nav>
                 <div class="nav-wrapper">
-                    <a href="{{ route('index') }}" class="brand-logo">Sistemas Escolar FLEX</a>
+                    <a href="{{ route('index') }}" class="brand-logo">Sistema Escolar FLEX</a>
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li><a href="{{ url('curso/') }}">Curso</a></li>
                         <li><a href="{{ url('professor/') }}">Professor</a></li>
