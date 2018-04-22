@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Professor;
 use View;
+use PDF;
 
 class ProfessorController extends Controller
 {
@@ -50,5 +51,12 @@ class ProfessorController extends Controller
         $professor = Professor::all();
 
         return redirect('/professor')->with("successMessage", "Professor Deletado Com Sucesso");
+    }
+
+    public function generatePdf() {
+        $professores = Professor::all();
+       
+        $pdf = PDF::loadview('professor.pdf', ['professores' => $professores]);
+        return $pdf->download('professores.pdf');
     }
 }
