@@ -8,7 +8,6 @@ use App\Professor;
 class ProfessorController extends Controller
 {
     public function index() {
-
         $professores = Professor::all();
 
         return view('professor/index', [
@@ -16,10 +15,14 @@ class ProfessorController extends Controller
         ]);
     }
 
+    public function viewCreate() {
+        return view('professor.create');
+    }
+
     public function create(Request $request) {
         Professor::create($request->all());
-        
-        return $request->all();
+
+        return redirect('professor/')->with("successMessage", "Professor Cadastrado Com Sucesso");
     }
 
     public function update(Request $request, $id) {
