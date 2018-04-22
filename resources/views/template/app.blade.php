@@ -28,7 +28,6 @@
                         <li><a href="{{ url('professor/') }}">Professor</a></li>
                         <li><a href="{{ url('disciplina/') }}">Disciplina</a></li>
                         <li><a href="{{ url('aluno/') }}">Alunos</a></li>
-                        <li><a href="*">Turma</a></li>
                     </ul>
                 </div>
             </nav>

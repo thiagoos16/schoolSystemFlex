@@ -7,6 +7,7 @@ use App\Curso;
 use View;
 use PDF;
 use Redirect;
+use Exception;
 
 class CursoController extends Controller
 {
@@ -24,9 +25,12 @@ class CursoController extends Controller
     }
 
     public function create(Request $request) {
-        Curso::create($request->all());
-
-        return redirect('curso/')->with("successMessage", "Curso Cadastrado Com Sucesso");
+        try {
+            Curso::create($request->all());
+            return redirect('curso/')->with("successMessage", "Curso Cadastrado Com Sucesso");
+        } catch (Exception $e) {
+            return redirect('/curso')->with("errorMessage", "Não foi possível Cadastrar o Curso. Preencha todos os campos.");
+        }
     }
 
     public function viewEdit($id) {
@@ -36,9 +40,13 @@ class CursoController extends Controller
     }
 
     public function edit(Request $request) {
-        Curso::find($request->id)->update($request->all());
-
-        return redirect('/curso')->with("successMessage", "Curso Editado Com Sucesso");
+        try {
+            Curso::find($request->id)->update($request->all());
+            return redirect('/curso')->with("successMessage", "Curso Editado Com Sucesso");
+        } catch (Exception $e) {
+            return redirect('/curso')->with("errorMessage", "Não foi possível Editar o Curso. Verifique os campos.");
+        }
+        
     }
 
     public function viewDelete($id) {
@@ -48,11 +56,17 @@ class CursoController extends Controller
     }
 
     public function delete($id) {
-        Curso::find($id)->delete();
+        $curso = Curso::find($id);
 
-        $cursos = Curso::all();
-
-        return redirect('/curso')->with("successMessage", "Curso Deletado Com Sucesso");
+        $alunos = $curso->alunos()->get();
+        
+        if (count($alunos) < 0) {
+            Curso::find($id)->delete();
+            
+            return redirect('/curso')->with("successMessage", "Curso Deletado Com Sucesso.");
+        } else {
+            return redirect('/curso')->with("errorMessage", "Não foi Possível deletar o curso. Ele deve estar relacionado a alunos.");
+        }
     }
 
     public function generatePdf() {
