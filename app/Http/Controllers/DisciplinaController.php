@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Disciplina;
 use View;
+use PDF;
 
 class DisciplinaController extends Controller
 {
@@ -47,8 +48,13 @@ class DisciplinaController extends Controller
     public function delete($id) {
         Disciplina::find($id)->delete();
 
-        $cursos = Disciplina::all();
-
         return redirect('/disciplina')->with("successMessage", "Curso Deletado Com Sucesso");
+    }
+
+    public function generatePdf() {
+        $disciplinas = Disciplina::all();
+       
+        $pdf = PDF::loadview('disciplina.pdf', ['disciplinas' => $disciplinas]);
+        return $pdf->download('disciplinas.pdf');
     }
 }
