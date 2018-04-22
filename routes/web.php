@@ -49,10 +49,16 @@ Route::group(['prefix' => 'disciplina'], function () {
     Route::get('/pdf', 'DisciplinaController@generatePdf');   
 });
 
-// Route::get('disciplina/', 'DisciplinaController@index');
-// Route::post('disciplina/', 'DisciplinaController@create');
-// Route::put('disciplina/{id}', 'DisciplinaController@update');
-// Route::delete('disciplina/{id}', 'DisciplinaController@delete');
+Route::group(['prefix' => 'aluno'], function () { 
+    Route::get('/', 'AlunoController@index');
+    Route::get('/new', 'AlunoController@viewCreate');
+    Route::post('/create', 'AlunoController@create');
+    Route::get('/edit/{id}', 'AlunoController@viewEdit');
+    Route::post('/edit', 'AlunoController@edit');
+    Route::get('/delete/{id}', 'AlunoController@viewDelete');
+    Route::get('/destroy/{id}', 'AlunoController@delete'); 
+    Route::get('/pdf', 'AlunoController@generatePdf');   
+});
 
 // Route::get('aluno/', 'AlunoController@index');
 // Route::post('aluno/', 'AlunoController@create');
