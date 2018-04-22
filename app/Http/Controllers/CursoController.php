@@ -59,10 +59,9 @@ class CursoController extends Controller
         $curso = Curso::find($id);
 
         $alunos = $curso->alunos()->get();
-        
-        if (count($alunos) < 0) {
+
+        if (count($alunos) == 0) {
             Curso::find($id)->delete();
-            
             return redirect('/curso')->with("successMessage", "Curso Deletado Com Sucesso.");
         } else {
             return redirect('/curso')->with("errorMessage", "Não foi Possível deletar o curso. Ele deve estar relacionado a alunos.");
