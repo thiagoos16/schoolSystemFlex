@@ -14,7 +14,7 @@ class AlunoController extends Controller
         
         foreach ($alunos_aux as $aluno) {
             $curso = $aluno->curso()->where('id', $aluno->id_curso)->first();
-            
+        
             $tempAluno = $aluno;
             $tempAluno['curso'] = $curso->nome;
 
