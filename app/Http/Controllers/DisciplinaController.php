@@ -38,9 +38,17 @@ class DisciplinaController extends Controller
         return redirect('/disciplina')->with("successMessage", "Curso Editado Com Sucesso");
     }
 
+    public function viewDelete($id) {
+        $disciplina = Disciplina::find($id);
+
+        return View::make('disciplina.delete')->with('disciplina', $disciplina);
+    }
+
     public function delete($id) {
         Disciplina::find($id)->delete();
 
-        return Disciplina::all();
+        $cursos = Disciplina::all();
+
+        return redirect('/disciplina')->with("successMessage", "Curso Deletado Com Sucesso");
     }
 }
