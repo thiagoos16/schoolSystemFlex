@@ -1,4 +1,8 @@
+## Modelo Entidade Relacionamento
 <p align="center"><img src="mer.png"></p>
+
+## Endereço de Produção:
+- http://schoolsystemflex.herokuapp.com/
 
 ## Sobre o Sistema Escolar Flex
  Sistema de Gerencimento de Instituição Escolar. Possui as Seguintes Funcionalidades.
