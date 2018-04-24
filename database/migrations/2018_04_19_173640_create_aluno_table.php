@@ -13,7 +13,7 @@ class CreateAlunoTable extends Migration
      */
     public function up()
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        // DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         Schema::create('aluno', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome');
@@ -30,7 +30,7 @@ class CreateAlunoTable extends Migration
 
             $table->timestamps();
         });
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        // DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 
     /**

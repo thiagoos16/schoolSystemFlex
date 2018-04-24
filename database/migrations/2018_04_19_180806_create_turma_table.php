@@ -13,7 +13,7 @@ class CreateTurmaTable extends Migration
      */
     public function up()
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        // DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         Schema::create('turma', function (Blueprint $table) {
             $table->increments('id');            
             $table->string('sigla');
@@ -26,7 +26,7 @@ class CreateTurmaTable extends Migration
 
             $table->timestamps();
         });
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        // DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 
     /**
