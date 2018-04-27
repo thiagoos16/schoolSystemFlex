@@ -6,12 +6,12 @@
         <h5 style="margin-bottom:40px;"> {{ Session::get('errorMessage') }} </h5>
 
         <div class="row">
-            <div class="col s6">
+            <div class="col s4">
                 <a href="{{ url('aluno/new') }}" class="waves-effect waves-light btn">
                     <i class="material-icons left">add_box</i>Novo Aluno
                 </a>
             </div>
-            <div class="col s6">
+            <div class="col s4">
                 <a href="{{ url('aluno/pdf') }}" class="waves-effect waves-light btn">
                     <i class="material-icons left">picture_as_pdf</i>Gerar PDF
                 </a>
@@ -50,6 +50,9 @@
                                 </a> 
                                 <a href="{{ url('aluno/delete', $aluno->id) }}" title="Deletar">
                                     <i class="material-icons">delete</i>
+                                </a>
+                                <a href="{{ url('aluno/turmas', $aluno->id) }}" title="Turmas">
+                                    <i class="material-icons">Matricular-se em Turma</i>
                                 </a> 
                             </td>
                         </tr>

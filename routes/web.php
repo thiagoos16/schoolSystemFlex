@@ -57,7 +57,9 @@ Route::group(['prefix' => 'aluno'], function () {
     Route::post('/edit', 'AlunoController@edit');
     Route::get('/delete/{id}', 'AlunoController@viewDelete');
     Route::get('/destroy/{id}', 'AlunoController@delete'); 
-    Route::get('/pdf', 'AlunoController@generatePdf');   
+    Route::get('/pdf', 'AlunoController@generatePdf');  
+    Route::get('/turmas/{id}', 'AlunoController@viewTurmas');
+    Route::post('/createTurmaAluno', 'AlunoController@createTurmaAluno'); 
 });
 
 Route::group(['prefix' => 'turma'], function () { 

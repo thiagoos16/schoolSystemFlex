@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Aluno;
 use App\Curso;
+use App\Turma;
 use View;
 use PDF;
 use Exception;
@@ -101,5 +102,30 @@ class AlunoController extends Controller
        
         $pdf = PDF::loadview('aluno.pdf', ['alunos' => $alunos]);
         return $pdf->download('alunos.pdf');
+    }
+
+    public function viewTurmas($id) {
+        $aluno = Aluno::find($id);
+
+        $turmas = Turma::all();
+
+        $turmasAluno = $aluno->turmas()->get();
+
+        return view('aluno/turmas', [
+            'turmasAluno' => $turmasAluno,
+            'turmas' => $turmas,
+            'aluno_id' => $id
+        ]);
+    }
+
+    public function createTurmaAluno(Request $request) {
+        try {
+            $turma = Turma::find($request->id_turma);
+            $aluno = Aluno::find($request->aluno_id);
+            $aluno->turmas()->save($turma);
+            return redirect('/aluno/turmas/' . $request->aluno_id)->with("successMessage", "Aluno Matriculado na Turma Com Sucesso");
+        } catch (Exception $e) {
+            return redirect('/aluno/turmas/' . $request->aluno_id)->with("errorMessage", "Não foi possível Matricular o Aluno na Turma.");
+        }
     }
 }

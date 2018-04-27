@@ -35,16 +35,4 @@ class TurmaController extends Controller
             return redirect('/turma')->with("errorMessage", "Não foi possível Cadastrar a Turma. Preencha todos os campos.");
         }
     }
-
-    public function update(Request $request, $id) {
-        Turma::find($id)->update($request->all());
-
-        return $request->all();
-    }
-
-    public function delete($id) {
-        Turma::find($id)->delete();
-
-        return Turma::all();
-    }
 }

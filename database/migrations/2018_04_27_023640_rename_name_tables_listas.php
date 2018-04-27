@@ -13,7 +13,7 @@ class RenameNameTablesListas extends Migration
      */
     public function up()
     {
-        Schema::rename('lista_alunos', 'turma_aluno');
+        Schema::rename('lista_alunos', 'aluno_turma');
         Schema::rename('lista_turmas', 'curso_turma');
     }
 
