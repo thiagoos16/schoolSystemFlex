@@ -60,12 +60,8 @@ Route::group(['prefix' => 'aluno'], function () {
     Route::get('/pdf', 'AlunoController@generatePdf');   
 });
 
-// Route::get('aluno/', 'AlunoController@index');
-// Route::post('aluno/', 'AlunoController@create');
-// Route::put('aluno/{id}', 'AlunoController@update');
-// Route::delete('aluno/{id}', 'AlunoController@delete');
-
-// Route::get('turma/', 'TurmaController@index');
-// Route::post('turma/', 'TurmaController@create');
-// Route::put('turma/{id}', 'TurmaController@update');
-// Route::delete('turma/{id}', 'TurmaController@delete');
+Route::group(['prefix' => 'turma'], function () { 
+    Route::get('/', 'TurmaController@index');
+    Route::get('/new', 'TurmaController@viewCreate');
+    Route::post('/create', 'TurmaController@create'); 
+});
