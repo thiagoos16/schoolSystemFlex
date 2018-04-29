@@ -25,7 +25,8 @@ Route::group(['prefix' => 'curso'], function () {
     Route::get('/delete/{id}', 'CursoController@viewDelete');
     Route::get('/destroy/{id}', 'CursoController@delete'); 
     Route::get('/pdf', 'CursoController@generatePdf');
-    Route::get('/turmas', 'CursoController@viewTurmas');   
+    Route::get('/turmas/{id}', 'CursoController@viewTurmas'); 
+    Route::post('/createTurmaCurso', 'CursoController@createTurmaCurso');   
 });
 
 Route::group(['prefix' => 'professor'], function () { 

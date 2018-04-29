@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Curso;
+use App\Professor;
+use App\Disciplina;
 use View;
 use PDF;
 use Redirect;
@@ -73,5 +75,20 @@ class CursoController extends Controller
        
         $pdf = PDF::loadview('curso.pdf', ['cursos' => $cursos]);
         return $pdf->download('cursos.pdf');
+    }
+
+    public function viewTurmas($id) {
+        $curso = Curso::find($id);
+        $disciplinas = Disciplina::all();
+        $professores = Professor::all();
+
+        $turmasCursos = $curso->turmas()->get();
+
+        return view('curso.turmas',[
+            'curso_id' => $cursos->id,
+            'turmasCurso' => $turmasCurso,
+            'disciplinas' => $disciplinas,
+            'professores' => $professores
+        ]);
     }
 }
