@@ -51,8 +51,8 @@
                                 <a href="{{ url('aluno/delete', $aluno->id) }}" title="Deletar">
                                     <i class="material-icons">delete</i>
                                 </a>
-                                <a href="{{ url('aluno/turmas', $aluno->id) }}" title="Turmas">
-                                    <i class="material-icons">Matricular-se em Turma</i>
+                                <a href="{{ url('aluno/turmas', $aluno->id) }}" title="Matricular-se em Turma">
+                                    <i class="material-icons">title</i>
                                 </a> 
                             </td>
                         </tr>

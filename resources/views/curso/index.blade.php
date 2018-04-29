@@ -42,7 +42,10 @@
                                 </a> 
                                 <a href="{{ url('curso/delete', $curso->id) }}" title="Deletar">
                                     <i class="material-icons">delete</i>
-                                </a> 
+                                </a>
+                                <a href="{{ url('curso/turmas', $curso->id) }}" title="Criar Turma">
+                                    <i class="material-icons">title</i>
+                                </a>  
                             </td>
                         </tr>
                     @endforeach
