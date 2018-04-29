@@ -82,10 +82,10 @@ class CursoController extends Controller
         $disciplinas = Disciplina::all();
         $professores = Professor::all();
 
-        $turmasCursos = $curso->turmas()->get();
+        $turmasCurso = $curso->turmas()->get();
 
         return view('curso.turmas',[
-            'curso_id' => $cursos->id,
+            'curso_id' => $curso->id,
             'turmasCurso' => $turmasCurso,
             'disciplinas' => $disciplinas,
             'professores' => $professores
