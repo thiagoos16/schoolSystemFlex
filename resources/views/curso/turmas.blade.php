@@ -54,8 +54,8 @@
                         <tr>
                             <td> {{ $turma->id }} </td>
                             <td> {{ $turma->sigla }} </td>
-                            <td> {{ $turma->id_professor }} </td>
-                            <td> {{ $turma->id_disciplina }} </td>
+                            <td> {{ $turma->professor_nome }} </td>
+                            <td> {{ $turma->disciplina_nome }} </td>
                             <td> 
                                 <a href="*" title="Editar">
                                     <i class="material-icons">edit</i>
@@ -70,6 +70,7 @@
             </tbody>
         </table>
     </div>
+    <script type="text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('select').material_select();

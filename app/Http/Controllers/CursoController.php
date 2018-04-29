@@ -82,7 +82,20 @@ class CursoController extends Controller
         $disciplinas = Disciplina::all();
         $professores = Professor::all();
 
-        $turmasCurso = $curso->turmas()->get();
+        $turmasCursoAux = $curso->turmas()->get();
+        $turmasCurso = [];
+
+        foreach ($turmasCursoAux as $turmaCursoAux) {
+            $tempTurmaCurso = $turmaCursoAux;
+
+            $disciplina = Dsciplina::find($tempTurmaCurso->id_disciplina);
+            $professor = Professor::find($tempTurmaCurso->id_professor);
+
+            $tempTurmaCurso['professor_nome'] = $professor->nome;
+            $tempTurmaCurso['disciplina_nome'] = $disciplina->nome;
+
+            $turmasCurso[] = $tempTurmaCurso;
+        }
 
         return view('curso.turmas',[
             'curso_id' => $curso->id,
