@@ -41,11 +41,11 @@
         <table>
             <thead>
                 <tr>
-                    <th> id </th>
-                    <th> sigla </th>
-                    <th> id_professor </th>
-                    <th> id_disciplina </th>
-                    <th> ações </th>
+                    <th> Id </th>
+                    <th> Sigla </th>
+                    <th> Professor </th>
+                    <th> Disciplina </th>
+                    <th> Ações </th>
                 </tr>
             </thead>
             <tbody>

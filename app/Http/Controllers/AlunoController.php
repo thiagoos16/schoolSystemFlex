@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Aluno;
 use App\Curso;
 use App\Turma;
+use App\Professor;
+use App\Disciplina;
 use View;
 use PDF;
 use Exception;
@@ -109,7 +111,20 @@ class AlunoController extends Controller
 
         $turmas = Turma::all();
 
-        $turmasAluno = $aluno->turmas()->get();
+        $turmasAlunoAux = $aluno->turmas()->get();
+        $turmasAluno = [];
+
+        foreach ($turmasAlunoAux as $turmaAlunoAux) {
+            $tempTurmaAluno = $turmaAlunoAux;
+
+            $disciplina = Disciplina::find($tempTurmaAluno->id_disciplina);
+            $professor = Professor::find($tempTurmaAluno->id_professor);
+
+            $tempTurmaAluno['professor_nome'] = $professor->nome;
+            $tempTurmaAluno['disciplina_nome'] = $disciplina->nome;
+
+            $turmasAluno[] = $tempTurmaAluno;
+        }
 
         return view('aluno/turmas', [
             'turmasAluno' => $turmasAluno,
@@ -122,10 +137,28 @@ class AlunoController extends Controller
         try {
             $turma = Turma::find($request->id_turma);
             $aluno = Aluno::find($request->aluno_id);
-            $aluno->turmas()->save($turma);
-            return redirect('/aluno/turmas/' . $request->aluno_id)->with("successMessage", "Aluno Matriculado na Turma Com Sucesso");
+        
+            if ($aluno->turmas->contains($turma)) {
+                return redirect('/aluno/turmas/' . $request->aluno_id)->with("errorMessage", "Aluno Já Matriculado na Matéria.");
+            } else {
+                $aluno->turmas()->save($turma);
+                return redirect('/aluno/turmas/' . $request->aluno_id)->with("successMessage", "Aluno Matriculado na Turma Com Sucesso.");
+            }
         } catch (Exception $e) {
             return redirect('/aluno/turmas/' . $request->aluno_id)->with("errorMessage", "Não foi possível Matricular o Aluno na Turma.");
+        }
+    }
+
+    public function deleteTurmaAluno($aluno_id, $turma_id) {
+        try {
+            $aluno = Aluno::find($aluno_id);
+            $turma = Turma::find($turma_id);
+
+            $aluno->turmas()->detach($turma_id);
+
+            return redirect('/aluno/turmas/' . $aluno_id)->with("successMessage", "Aluno Desmatriculado da Turma Com Sucesso.");
+        } catch (Exception $e) {
+            return redirect('/aluno/turmas/' . $aluno_id)->with("errorMessage", "Erro ao Desmatricular aluno da turma.");
         }
     }
 }

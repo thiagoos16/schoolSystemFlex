@@ -2,7 +2,7 @@
 
 @section("content")
     <div class="container">
-        <h3 style="margin-bottom:40px;"> {{ Session::get('successMessage') }} </h3>
+        <h5 style="margin-bottom:40px;"> {{ Session::get('successMessage') }} </h5>
         <h5 style="margin-bottom:40px;"> {{ Session::get('errorMessage') }} </h5>
 
         <div class="row">
@@ -26,11 +26,11 @@
         <table>
             <thead>
                 <tr>
-                    <th> id </th>
-                    <th> sigla </th>
-                    <th> id_professor </th>
-                    <th> id_disciplina </th>
-                    <th> ações </th>
+                    <th> Id </th>
+                    <th> Sigla </th>
+                    <th> Professor </th>
+                    <th> Disciplina </th>
+                    <th> Ações </th>
                 </tr>
             </thead>
             <tbody>
@@ -39,13 +39,10 @@
                         <tr>
                             <td> {{ $turma->id }} </td>
                             <td> {{ $turma->sigla }} </td>
-                            <td> {{ $turma->id_professor }} </td>
-                            <td> {{ $turma->id_disciplina }} </td>
-                            <td> 
-                                <a href="*" title="Editar">
-                                    <i class="material-icons">edit</i>
-                                </a> 
-                                <a href="*" title="Deletar">
+                            <td> {{ $turma->professor_nome }} </td>
+                            <td> {{ $turma->disciplina_nome }} </td>
+                            <td>  
+                                <a href="{{ url('aluno/deleteTurmaAluno', [$aluno_id, $turma->id]) }}" title="Cancelar Matrícula">
                                     <i class="material-icons">delete</i>
                                 </a> 
                             </td>
