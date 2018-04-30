@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Curso;
 use App\Professor;
 use App\Disciplina;
+use App\Turma;
 use View;
 use PDF;
 use Redirect;
@@ -88,7 +89,7 @@ class CursoController extends Controller
         foreach ($turmasCursoAux as $turmaCursoAux) {
             $tempTurmaCurso = $turmaCursoAux;
 
-            $disciplina = Dsciplina::find($tempTurmaCurso->id_disciplina);
+            $disciplina = Disciplina::find($tempTurmaCurso->id_disciplina);
             $professor = Professor::find($tempTurmaCurso->id_professor);
 
             $tempTurmaCurso['professor_nome'] = $professor->nome;
@@ -103,5 +104,23 @@ class CursoController extends Controller
             'disciplinas' => $disciplinas,
             'professores' => $professores
         ]);
+    }
+
+    public function createTurmaCurso(Request $request) {
+        try {
+            $turma['sigla'] = $request->sigla;
+            $turma['id_disciplina'] = $request->id_disciplina;
+            $turma['id_professor'] = $request->id_professor;
+
+            Turma::create($turma);
+            $turmaCriada = Turma::orderBy('created_at', 'desc')->first();
+
+            $curso = Curso::find($request->curso_id);
+            $curso->turmas()->save($turmaCriada);
+
+            return redirect('/curso/turmas/' . $request->curso_id)->with("successMessage", "Turma Criada com Sucesso.");
+        } catch (Exception $e) {
+            return redirect('/curso/turmas/' . $request->curso_id)->with("errorMessage", "Não foi possível criar a turma");
+        }
     }
 }
